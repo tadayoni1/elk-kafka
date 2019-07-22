@@ -12,3 +12,4 @@ docker_elasticsearch_expose:
 docker_elasticsearch_ports:
   - "9200:9200"
   - "9300:9300"
+docker_env_discovery_type: "single-node"

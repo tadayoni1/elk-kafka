@@ -35,5 +35,7 @@
     recreate: "yes"
     restart_policy: unless-stopped
     pull: "true"
+    env:
+        discovery.type: "{{ docker_env_discovery_type }}"
 
 # TODO: mount logs folder
