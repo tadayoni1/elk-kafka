@@ -1,18 +1,49 @@
 ---
+- name: disconnecting kibana container to network bridge
+  command: docker network disconnect br0 kibana
+  ignore_errors: yes
+
+- name:  disconnecting logstash container to network bridge
+  command: docker network disconnect br0 logstash
+  ignore_errors: yes
+
+- name:  disconnecting elasticsearch container to network bridge
+  command: docker network disconnect br0 elasticsearch
+  ignore_errors: yes
+
+- name:  disconnecting kafka-docker_kafka_1 container to network bridge
+  command: docker network disconnect br0 kafka-docker_kafka_1
+  ignore_errors: yes
+
+- name:  disconnecting kafka-docker_zookeeper_1 container to network bridge
+  command: docker network disconnect br0 kafka-docker_zookeeper_1
+  ignore_errors: yes
+
+- name: removing network bridge
+  command: docker network rm bridge br0
+  ignore_errors: yes
+
+
 - name: creating network bridge
   command: docker network create -d bridge br0
+  ignore_errors: yes
 
 - name: connecting kibana container to network bridge
   command: docker network connect br0 kibana
+  ignore_errors: yes
 
 - name:  connecting logstash container to network bridge
   command: docker network connect br0 logstash
+  ignore_errors: yes
 
 - name:  connecting elasticsearch container to network bridge
   command: docker network connect br0 elasticsearch
+  ignore_errors: yes
 
 - name:  connecting kafka-docker_kafka_1 container to network bridge
   command: docker network connect br0 kafka-docker_kafka_1
+  ignore_errors: yes
 
 - name:  connecting kafka-docker_zookeeper_1 container to network bridge
   command: docker network connect br0 kafka-docker_zookeeper_1
+  ignore_errors: yes
