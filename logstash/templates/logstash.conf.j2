@@ -20,6 +20,6 @@ filter {
 output {
   elasticsearch { 
     hosts => ["{{ elasticsearch_url }}:9200"] 
-    index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
+    index => "kafka-%{+YYYY.MM.dd}"
   }
 }
