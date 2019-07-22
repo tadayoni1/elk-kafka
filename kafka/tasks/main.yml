@@ -1,0 +1,3 @@
+---
+- name: installing kafka
+  command: "./install_kafka.sh"

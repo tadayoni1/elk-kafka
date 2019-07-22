@@ -1,0 +1,24 @@
+---
+- name: remove existing {{ docker_kibana_service }} files and directories
+  file:
+    path: "{{ kibana_path }}"
+    state: absent
+
+- name: remove existing {{ docker_kibana_service }} container
+  docker_container:
+    image: "{{ docker_kibana_image }}"
+    name: "{{ docker_kibana_service }}"
+    state: absent
+  
+- name: Run docker {{ docker_kibana_service }} container
+  become: true
+  docker_container:
+    api_version: "{{ docker_api_version }}"
+    exposed_ports: "{{ docker_kibana_expose }}"
+    ports: "{{ docker_kibana_ports }}"
+    image: "{{ docker_kibana_image }}"
+    name: "{{ docker_kibana_service }}"
+    command: "{{ docker_kibana_command }}"
+    pull: "true"
+    restart_policy: unless-stopped
+    state: started

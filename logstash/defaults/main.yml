@@ -1,0 +1,15 @@
+---
+logstash_path: "/usr/share/logstash/"
+
+# docker
+docker_logstash_image: "docker.elastic.co/logstash/logstash:7.2.0"
+docker_logstash_name: "logstash"
+docker_logstash_expose:
+  - 5044
+docker_logstash_ports:
+  - 5044:5044
+
+# logstash.yml
+http_host: "0.0.0.0"
+elasticsearch_url: "elasticsearch"
+kafka_url: "kafka-docker_kafka_1"

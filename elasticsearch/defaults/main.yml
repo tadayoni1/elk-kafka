@@ -1,0 +1,14 @@
+---
+elasticsearch_path: "/usr/share/elasticsearch/"
+elasticsearch_path_data: "{{ elasticsearch_path }}/var/data/"
+elasticsearch_path_logs: "{{ elasticsearch_path }}/var/log/"
+
+# docker
+docker_elasticsearch_image: "docker.elastic.co/elasticsearch/elasticsearch:7.2.0"
+docker_elasticsearch_service: "elasticsearch"
+docker_elasticsearch_expose:
+  - "9200"
+  - "9300"
+docker_elasticsearch_ports:
+  - "9200:9200"
+  - "9300:9300"

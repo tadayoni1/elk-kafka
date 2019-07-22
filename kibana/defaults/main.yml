@@ -1,0 +1,15 @@
+---
+kibana_path: "/usr/share/kibana/"
+
+# docker
+docker_kibana_image: "docker.elastic.co/kibana/kibana:7.2.0"
+docker_kibana_service: "kibana"
+docker_kibana_expose:
+  - 5601
+docker_kibana_ports:
+  - 5601:5601
+docker_kibana_command: ""
+docker_kibana_net: default
+docker_kibana_template_path: ""
+docker_kibana_memory_limit: 512MB
+docker_api_version: 1.21

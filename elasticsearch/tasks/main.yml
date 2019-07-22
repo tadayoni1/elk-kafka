@@ -1,0 +1,40 @@
+---
+- name: remove existing {{ docker_elasticsearch_service }} files and directories
+  file:
+    path: "{{ elasticsearch_path }}"
+    state: absent
+
+- name: create {{ docker_elasticsearch_service }} directory
+  file:
+    path: "{{ elasticsearch_path }}"
+    state: directory
+ 
+- name: create {{ docker_elasticsearch_service }} logs directory
+  become: true
+  file:
+    path: "{{ elasticsearch_path_logs }}"
+    state: directory
+    mode: 0775
+    owner: 1000
+    group: 1000
+
+- name: remove existing {{ docker_elasticsearch_service }} container
+  docker_container:
+    image: "{{ docker_elasticsearch_image }}"
+    name: "{{ docker_elasticsearch_service }}"
+    state: absent
+  
+- name: deploy {{ docker_elasticsearch_service }} docker container
+  docker_container:
+    name: "{{ docker_elasticsearch_service }}"
+    exposed_ports: "{{ docker_elasticsearch_expose }}"
+    ports: "{{ docker_elasticsearch_ports }}"
+    detach: "true"
+    image: "{{ docker_elasticsearch_image }}"
+    network_mode: host
+    state: started
+    recreate: "yes"
+    restart_policy: unless-stopped
+    pull: "true"
+
+# TODO: mount logs folder
