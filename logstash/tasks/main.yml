@@ -35,7 +35,6 @@
     state: started
     exposed_ports: "{{ docker_logstash_expose }}"
     ports: "{{ docker_logstash_ports }}"
-    network_mode: host
     restart_policy: unless-stopped
     volumes: "{{ logstash_path }}/pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf"
  
