@@ -10,4 +10,4 @@ sed -i 's/KAFKA_ADVERTISED_HOST_NAME:/&'" $hostip"' #/' docker-compose.yml
 docker rm -f kafka-docker_kafka_1
 docker rm -f kafka-docker_zookeeper_1
 
-docker-compose up
+docker-compose up -d
