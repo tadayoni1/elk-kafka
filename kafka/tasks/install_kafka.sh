@@ -13,15 +13,19 @@ if grep "KAFKA_ADVERTISED_HOST_NAME:"" $hostip" docker-compose.yml
 then 
     sed -i 's/KAFKA_ADVERTISED_HOST_NAME:/&'" $hostip"' #/' docker-compose.yml
 fi
+
 if grep "kafka:" docker-compose.yml
 then
     if [ ! grep "restart: always"]
+    then
         sed -i '/kafka:/a\ \ \ \ restart: always' docker-compose.yml
     fi
 fi
+
 if grep "zookeeper:" docker-compose.yml
 then
     if [ ! grep "restart: always"]
+    then
         sed -i '/zookeeper:/a\ \ \ \ restart: always' docker-compose.yml
     fi
 fi
