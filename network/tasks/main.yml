@@ -1,0 +1,18 @@
+---
+- name: creating network bridge
+  command: docker network create -d bridge br0
+
+- name: connecting kibana container to network bridge
+  command: docker network connect br0 kibana
+
+- name:  connecting logstash container to network bridge
+  command: docker network connect br0 logstash
+
+- name:  connecting elasticsearch container to network bridge
+  command: docker network connect br0 elasticsearch
+
+- name:  connecting kafka-docker_kafka_1 container to network bridge
+  command: docker network connect br0 kafka-docker_kafka_1
+
+- name:  connecting kafka-docker_zookeeper_1 container to network bridge
+  command: docker network connect br0 kafka-docker_zookeeper_1
