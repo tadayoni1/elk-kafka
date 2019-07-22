@@ -15,7 +15,7 @@ then
     sed -i 's/"9092/&:9092/' docker-compose.yml
 fi
 
-if grep "KAFKA_ADVERTISED_HOST_NAME:"" $hostip" docker-compose.yml
+if [ ! grep "KAFKA_ADVERTISED_HOST_NAME:"" $hostip" docker-compose.yml ]
 then 
     sed -i 's/KAFKA_ADVERTISED_HOST_NAME:/&'" $hostip"' #/' docker-compose.yml
 fi
