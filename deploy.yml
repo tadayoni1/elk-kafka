@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  toles:
+    - elasticsearch
+    - kibana
+    - logstash
+    - kafka
