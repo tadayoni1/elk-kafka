@@ -19,12 +19,12 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-add-repository -y ppa:ansible/ansible
 sudo apt-get update -y
-sudo apt-get install ansible -y
+sudo apt-get install ansible 'ansible==2.8.2' -y
 sudo apt-get install python -y
 
 # Install docker-python
 sudo apt install python-pip -y
-sudo pip install docker-py -y
+sudo pip install docker-py==1.10.6 -y
 
 # Clone git repo
 cd /home/ubuntu
@@ -32,4 +32,4 @@ git clone https://github.com/tadayoni1/elk-kafka.git
 
 # Deploy ELK and Kafka
 cd elk-kafka
-ansible-playbook deploy.yml
+sudo ansible-playbook deploy.yml -b
