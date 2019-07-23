@@ -3,15 +3,15 @@ data "template_file" "launch" {
 }
 
 resource "aws_instance" "web" {
-  ami             = "${var.ami_id}"
-  instance_type   = "${var.instance_type}"
-  user_data       = "${data.template_file.launch.rendered}"
-  key_name        = "${var.key_name}"
-  security_groups = ["${aws_security_group.kibana.id}"]
-  depends_on      = [aws_security_group.kibana]
+  ami                     = "${var.ami_id}"
+  instance_type           = "${var.instance_type}"
+  user_data               = "${data.template_file.launch.rendered}"
+  key_name                = "${var.key_name}"
+  vpc_security_group_ids  = ["${aws_security_group.kibana.id}"]
+  depends_on              = [aws_security_group.kibana]
 
   tags = {
-    Name = "${var.instance_name}"
+    Name                  = "${var.instance_name}"
   }
 }
 
@@ -46,11 +46,11 @@ resource "aws_security_group_rule" "ingress_kibana" {
 }
 
 resource "aws_security_group" "kibana" {
-  name        = "${var.instance_name}-sg-kibana"
-  description = "Allow users to open kibana"
+  name                     = "${var.instance_name}-sg-kibana"
+  description              = "Allow users to open kibana"
 
   tags = {
-    Name = "${var.instance_name}-sg-kibana"
+    Name                   = "${var.instance_name}-sg-kibana"
   }
 
 }
