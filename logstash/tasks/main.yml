@@ -1,28 +1,28 @@
 ---
-- name: remove existing {{ docker_logstash_name }} files and directories
+- name: removing existing {{ docker_logstash_name }} files and directories
   file:
     path: "{{ logstash_path }}"
     state: absent
 
-- name: create {{ docker_logstash_name }} pipeline directory
+- name: creating {{ docker_logstash_name }} pipeline directory
   become: true
   file:
     path: "{{ logstash_path }}/pipeline"
     state: directory
 
-- name: create {{ docker_logstash_name }} pipeline file
+- name: creating {{ docker_logstash_name }} pipeline file
   become: true
   template:
     dest: "{{ logstash_path }}/pipeline/logstash.conf"
     src: "templates/logstash.conf.j2"
 
-- name: remove existing {{ docker_logstash_name }} container
+- name: removing existing {{ docker_logstash_name }} container
   docker_container:
     image: "{{ docker_logstash_image }}"
     name: "{{ docker_logstash_name }}"
     state: absent    
 
-- name: deploy {{ docker_logstash_name }} container
+- name: deploying {{ docker_logstash_name }} container
   docker_container:
     name: "{{ docker_logstash_name }}"
     image: "{{ docker_logstash_image }}"

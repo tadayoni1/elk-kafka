@@ -1,16 +1,16 @@
 ---
-- name: remove existing {{ docker_kibana_service }} files and directories
+- name: removing existing {{ docker_kibana_service }} files and directories
   file:
     path: "{{ kibana_path }}"
     state: absent
 
-- name: remove existing {{ docker_kibana_service }} container
+- name: removing existing {{ docker_kibana_service }} container
   docker_container:
     image: "{{ docker_kibana_image }}"
     name: "{{ docker_kibana_service }}"
     state: absent
   
-- name: Run docker {{ docker_kibana_service }} container
+- name: Running docker {{ docker_kibana_service }} container
   become: true
   docker_container:
     api_version: "{{ docker_api_version }}"

@@ -1,27 +1,27 @@
 ---
-- name: remove existing {{ docker_elasticsearch_service }} files and directories
+- name: removing existing {{ docker_elasticsearch_service }} files and directories
   file:
     path: "{{ elasticsearch_path }}"
     state: absent
 
-- name: create {{ docker_elasticsearch_service }} directory
+- name: creating {{ docker_elasticsearch_service }} directory
   file:
     path: "{{ elasticsearch_path }}"
     state: directory
  
-- name: create {{ docker_elasticsearch_service }} logs directory
+- name: creating {{ docker_elasticsearch_service }} logs directory
   become: true
   file:
     path: "{{ elasticsearch_path_logs }}"
     state: directory
 
-- name: remove existing {{ docker_elasticsearch_service }} container
+- name: removing existing {{ docker_elasticsearch_service }} container
   docker_container:
     image: "{{ docker_elasticsearch_image }}"
     name: "{{ docker_elasticsearch_service }}"
     state: absent
   
-- name: deploy {{ docker_elasticsearch_service }} docker container
+- name: deploying {{ docker_elasticsearch_service }} docker container
   docker_container:
     name: "{{ docker_elasticsearch_service }}"
     exposed_ports: "{{ docker_elasticsearch_expose }}"
