@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "${aws_region}"
+  region = "${var.aws_region}"
 }
 
 terraform {
