@@ -1,4 +1,4 @@
-logging.level: info
+logging.level: debug
 logging.to_files: true
 logging.files:
   path: /var/log/filebeat
@@ -10,7 +10,7 @@ filebeat.inputs:
 - type: log
   enabled: true
   paths:
-    - /var/log/*.log
+    - /var/log/filebeat/*
  
 output.kafka:
   codec.format:

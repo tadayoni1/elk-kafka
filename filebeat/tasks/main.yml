@@ -23,6 +23,7 @@
 - name: deploying {{ docker_filebeat_service }} docker container
   docker_container:
     name: "{{ docker_filebeat_service }}"
+    user: "root"
     detach: "true"
     image: "{{ docker_filebeat_image }}"
     state: started
