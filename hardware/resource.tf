@@ -8,6 +8,7 @@ resource "aws_instance" "web" {
   user_data       = "${data.template_file.launch.rendered}"
   key_name        = "${var.key_name}"
   security_groups = ["${aws_security_group.kibana.id}"]
+  depends_on      = [aws_security_group.kibana]
 
   tags = {
     Name = "${var.instance_name}"
