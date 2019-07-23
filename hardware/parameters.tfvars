@@ -1,5 +1,0 @@
-instance_name = "Elk-Kafka"
-instance_type = "t2.large"
-ami_id        = "ami-07b4f3c02c7f83d59"
-key_name      = "automation"
-aws_region    = "us-west-2"
