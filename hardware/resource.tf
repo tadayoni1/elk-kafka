@@ -2,7 +2,7 @@ data "template_file" "launch" {
   template = "${file("${path.module}/user-data.sh.tpl")}"
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "elk-kafka" {
   ami                     = "${var.ami_id}"
   instance_type           = "${var.instance_type}"
   user_data               = "${data.template_file.launch.rendered}"
