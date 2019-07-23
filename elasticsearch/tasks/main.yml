@@ -14,9 +14,6 @@
   file:
     path: "{{ elasticsearch_path_logs }}"
     state: directory
-    mode: 0775
-    owner: 1000
-    group: 1000
 
 - name: remove existing {{ docker_elasticsearch_service }} container
   docker_container:

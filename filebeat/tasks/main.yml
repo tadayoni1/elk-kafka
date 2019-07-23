@@ -30,4 +30,6 @@
     recreate: "yes"
     restart_policy: unless-stopped
     pull: "true"
-    volumes: "{{ filebeat_path }}/filebeat.yml:/usr/share/filebeat/filebeat.yml"
+    volumes: 
+    - "{{ filebeat_path }}/filebeat.yml:/usr/share/filebeat/filebeat.yml"
+    - "/var/log/:/tmp/log/"

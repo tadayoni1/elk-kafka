@@ -3,6 +3,7 @@ filebeat.inputs:
   enabled: true
   paths:
     - /var/log/*
+    - /tmp/log/*.log
  
 output.kafka:
   codec.format:
