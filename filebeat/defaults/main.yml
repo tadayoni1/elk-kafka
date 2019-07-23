@@ -1,0 +1,9 @@
+---
+filebeat_path: "/usr/share/filebeat"
+
+# docker
+docker_filebeat_image: "docker.elastic.co/beats/filebeat:7.2.0"
+docker_filebeat_service: "filebeat"
+
+
+kafka_url: "kafka-docker_kafka_1"

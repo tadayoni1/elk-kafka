@@ -1,0 +1,32 @@
+---
+- name: removing existing {{ docker_filebeat_service }} files and directories
+  file:
+    path: "{{ filebeat_path }}"
+    state: absent
+
+- name: creating {{ docker_filebeat_service }} pipeline directory
+  file:
+    path: "{{ filebeat_path }}"
+    state: directory
+
+- name: creating {{ docker_filebeat_service }} pipeline file
+  template:
+    dest: "{{ filebeat_path }}/filebeat.yml"
+    src: "templates/filebeat.yml.j2"
+ 
+- name: removing existing {{ docker_filebeat_service }} container
+  docker_container:
+    image: "{{ docker_filebeat_image }}"
+    name: "{{ docker_filebeat_service }}"
+    state: absent
+  
+- name: deploying {{ docker_filebeat_service }} docker container
+  docker_container:
+    name: "{{ docker_filebeat_service }}"
+    detach: "true"
+    image: "{{ docker_filebeat_image }}"
+    state: started
+    recreate: "yes"
+    restart_policy: unless-stopped
+    pull: "true"
+    volumes: "{{ filebeat_path }}/pipeline/logstash.conf:/usr/share/filebeat/filebeat.yml"

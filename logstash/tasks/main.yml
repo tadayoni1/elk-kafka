@@ -9,18 +9,12 @@
   file:
     path: "{{ logstash_path }}/pipeline"
     state: directory
-    mode: 0775
-    owner: 1000
-    group: 1000
 
 - name: create {{ docker_logstash_name }} pipeline file
   become: true
   template:
     dest: "{{ logstash_path }}/pipeline/logstash.conf"
     src: "templates/logstash.conf.j2"
-    mode: 0644
-    owner: 1000
-    group: 1000
 
 - name: remove existing {{ docker_logstash_name }} container
   docker_container:
