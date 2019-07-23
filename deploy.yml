@@ -5,4 +5,5 @@
     - kibana
     - logstash
     - kafka
+    - filebeat
     - network
