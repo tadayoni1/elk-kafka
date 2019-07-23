@@ -19,7 +19,7 @@ then
     sed -i 's/KAFKA_ADVERTISED_HOST_NAME:/&'" $hostip"' #/' docker-compose.yml
 fi
 
-if ! grep "KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181" docker-compose.yml
+if grep "KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181" docker-compose.yml
 then 
     sed -i 's/KAFKA_ZOOKEEPER_CONNECT:/& kafka-docker_zookeeper_1:2181 #/' docker-compose.yml
 fi
@@ -29,7 +29,7 @@ then
     sed -i '/kafka:/a\ \ \ \ restart: always' docker-compose.yml
 fi
 
-if grep -Pzo "zookeeper:\n\s{4}restart: always\n"  docker-compose.yml
+if ! grep -Pzo "zookeeper:\n\s{4}restart: always\n"  docker-compose.yml
 then
     sed -i '/zookeeper:/a\ \ \ \ restart: always' docker-compose.yml
 fi
