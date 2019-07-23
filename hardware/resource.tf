@@ -39,7 +39,7 @@ resource "aws_security_group_rule" "ingress_kibana" {
   from_port                = 5601
   to_port                  = 5601
   protocol                 = "tcp"
-  source_security_group_id = "${aws_security_group.lb.id}"
+  cidr_blocks              = ["0.0.0.0/0"]
 
   security_group_id        = "${aws_security_group.kibana.id}"
 }
