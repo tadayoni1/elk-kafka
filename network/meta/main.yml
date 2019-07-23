@@ -4,3 +4,4 @@ dependencies:
   - role: kibana
   - role: logstash
   - role: kafka
+  - role: filebeat

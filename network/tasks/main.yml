@@ -22,3 +22,7 @@
 - name:  connecting kafka-docker_zookeeper_1 container to network bridge
   command: docker network connect br0 kafka-docker_zookeeper_1
   ignore_errors: yes
+
+- name:  connecting filebeat container to network bridge
+  command: docker network connect br0 filebeat
+  ignore_errors: yes
