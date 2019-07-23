@@ -3,10 +3,10 @@ data "template_file" "launch" {
 }
 
 resource "aws_instance" "web" {
-  ami             = "${ami_id}"
-  instance_type   = "${instance_type}"
+  ami             = "${var.ami_id}"
+  instance_type   = "${var.instance_type}"
   user_data       = "${data.template_file.launch.rendered}"
-  key_name        = "${key_name}"
+  key_name        = "${var.key_name}"
   security_groups = ["${aws_security_group.kibana}"]
 
   tags = {
@@ -45,11 +45,11 @@ resource "aws_security_group_rule" "ingress_kibana" {
 }
 
 resource "aws_security_group" "kibana" {
-  name        = "${instance_name}-sg-kibana"
+  name        = "${var.instance_name}-sg-kibana"
   description = "Allow users to open kibana"
 
   tags = {
-    Name = "${instance_name}-sg-kibana"
+    Name = "${var.instance_name}-sg-kibana"
   }
 
 }
