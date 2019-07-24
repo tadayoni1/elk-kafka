@@ -3,12 +3,13 @@ Deploy ELK and Kafka on a single server using docker.
 
 
 
-This code provisions an EC2 instance with security groups using terraform. The EC2 user data installs docker and ansible and then deploys:
+This code provisions an EC2 instance with security groups using terraform. The EC2 user data installs docker and ansible and then runs the ansible playbooks which deploy:
 - kibana
 - elasticsearch
 - logstash
 - kafka
 - filebeat
+
 ![](https://github.com/tadayoni1/elk-kafka/blob/master/arch.png)
 
 
