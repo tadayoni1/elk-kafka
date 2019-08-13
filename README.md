@@ -22,7 +22,7 @@ The ansible playbook for network connects these containers together using a netw
 
 ### Deployment Steps
 - Clone the repo or copy the automation code to your automation server.
-  - On your automation server run `./start.sh`
+  - On your automation server run `./start.sh` (After terraform finishes you need to wait a few minutes for software installation and playbooks to run. You may want to pick a beefier server to speed it up.)
 
 ### Testing after deployment
 Filebeat is configured to ingest logs from the EC2 instance's /var/log. Logstash will send the logs to Elasticsearch under an index named kafka-<date>. 
